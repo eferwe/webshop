@@ -1,0 +1,33 @@
+(function(){
+	'use strict';
+
+	var productsService = function($http){
+
+		var getProducts = function (){
+			return $http.get("data/products.json")
+	        	.then(function (response){
+	        		return response.data;
+	        	});
+		}
+
+		var getCategories = function (){
+			return $http.get("data/categories.json")
+	        	.then(function (response){
+	        		return response.data;
+	        	});
+		}
+
+		// var getError =  function(reason){
+		// return $scope.error =  "Some error happend";
+		// }
+
+		return {
+			getProducts: getProducts,
+			getCategories: getCategories
+		}
+	}
+          
+	angular
+		.module("webshop")
+		.factory("productsService", productsService);
+}());
