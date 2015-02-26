@@ -8,14 +8,14 @@
 
 	angular
 	.module("webshop.product", [])
-	.controller("productController", productController );
+	.controller("productsController", productsController );
 	
 
-	function productController($scope, productsService, cartService, $rootScope){
+	function productsController($scope, productsService, cartService, $rootScope){
 
 //		$scope.products = $http.get("data/products.json");
 		$scope.categoriesSelected = new Array();
-		$rootScope.totalsum = 0;
+		
 		var modelProducts = function(data){
 			$scope.products = data;
 		}
@@ -36,7 +36,7 @@
 				$scope.categoriesSelected.splice(i , 1);
 			}	
 			else{
-			$scope.categoriesSelected.push(category)
+			$scope.categoriesSelected.push(category);
 			}
 		//	console.log(category);
 		}
@@ -51,22 +51,31 @@
 			return product;
 		}
 
-		$scope.sendtoChart = function(product){
+		$scope.sendtoCart = function(product){
 			var quantity = this.quantity;
-			var total = this.quantity*product.price;
-			 $rootScope.totalsum += total;
-			console.log($rootScope.totalsum);
+	//	var	 totalsum = total;
+		//	var total = this.quantity*product.price;
+		//	 $rootScope.totalsum += total;
+		
 			
 			
-			cartService.SetCart(product, quantity, total);
+			cartService.SetCart(product, quantity );
 					
 		}
 
+
+		// $scope.sendtoCart = function(product){
+		// 	return productsService.sendtoCart1(product);
+		// 	 }
+
+		 
+		
+
 		productsService.getProducts()
-				.then(modelProducts);
+				.then(modelProducts, getError);
 
 		productsService.getCategories()
-				.then(modelCategories);			
+				.then(modelCategories, getError);			
 
 		// $http.get("data/products.json")
 		// 	.then(getProducts , getError);

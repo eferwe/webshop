@@ -1,5 +1,6 @@
 [
 	{
+		"id":"Brooklyn",
 		"name":"Brooklyn Black Chocolate Stout",
 		"price":45,
 		"category": "Dark Stout",
@@ -8,6 +9,7 @@
 
 	},
 	{
+		"id":"BrewDog",
 		"name":"BrewDog Smokehead",
 		"price":66 ,
 		"category": "Dark Stout",
@@ -17,6 +19,7 @@
 
 	},
 	{
+		"id":"Anchor",
 		"name":"Anchor Steam",
 		"price":33 ,
 		"category":"Fruit",
@@ -26,6 +29,7 @@
 
 	},
 	{
+		"id":"Anchor Christmas",
 		"name":"Anchor Christmas Ale",
 		"price":73,
 		"category":"Sweet",
@@ -34,6 +38,7 @@
 
 	},
 	{
+		"id":"Allagash",
 		"name":"Allagash White",
 		"price":55 ,
 		"category":"White Stout",

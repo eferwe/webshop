@@ -3,27 +3,36 @@
 
 	var cartService  =  function($http, $rootScope){
 
-		var SetCart  = function(product, quantity, total ){
-			
+		var SetCart  = function(product, quantity ){
+			console.log(parseInt(quantity));
+			if(isNaN(parseInt(quantity)) || quantity < 0 )  return;
+
+
+
 			if($rootScope.cartProducts[product.name])
 			{
-				
-			     	 $rootScope.cartProducts[product.name].quantity += quantity; 
-			     	 $rootScope.cartProducts[product.name].total += total;
+				var cartproduct =  $rootScope.cartProducts[product.name]; 
+			     	 cartproduct.quantity += quantity; 
+			     	 cartproduct.total = quantity*cartproduct.product.price    ;
 			     	
+			     	 $rootScope.totalsum += cartproduct.total;
+
 
 				
 					
 				
 			}
+
 			else{
+				var total = quantity*product.price;
 				$rootScope.cartProducts[product.name]= {
 							product: product,
 							quantity: quantity,
 							total: total
-							
+					//		totalsum : totalsum
 	
 					}
+					 $rootScope.totalsum += total;
 			}
 
 		}
